@@ -17,6 +17,16 @@ class PageIdFallbackHandler(Handler):
             page = get_object_or_404(Page, pk=request.GET.get('p', None))
         except ValueError:
             raise Http404
-        return redirect(page)
+        
+        url = page.get_absolute_url()
+        get_vars = request.GET.copy()
+        del(get_vars['p'])
+        return redirect(self.url_with_querystring(url, get_vars))
+    
+    def url_with_querystring(self, url, get_vars):
+        if len(get_vars) > 0:
+            return '%s?%s' % (url, get_vars.urlencode())
+        else:
+            return url
 
 handler = PageIdFallbackHandler()
