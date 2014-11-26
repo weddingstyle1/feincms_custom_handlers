@@ -1,4 +1,4 @@
-from feincms.views.base import Handler
+from feincms.views.cbv.views import Handler
 from django.shortcuts import get_object_or_404, redirect
 from django.http import Http404
 from feincms.module.page.models import Page

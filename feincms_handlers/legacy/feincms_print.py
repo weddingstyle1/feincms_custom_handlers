@@ -2,7 +2,7 @@ from django.http import Http404
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 from feincms.module.page.models import Page
-from feincms.views.base import Handler
+from feincms.views.cbv.views import Handler
 from feincms_handlers import NotMyJob
 
 class PrintHandler(Handler):
